@@ -1,3 +1,7 @@
+output "databricks_access_connectors_id" {
+  description = "Map of id values across all databricks_access_connectors, keyed the same as var.databricks_access_connectors"
+  value       = { for k, v in azurerm_databricks_access_connector.databricks_access_connectors : k => v.id }
+}
 output "databricks_access_connectors_identity" {
   description = "Map of identity values across all databricks_access_connectors, keyed the same as var.databricks_access_connectors"
   value       = { for k, v in azurerm_databricks_access_connector.databricks_access_connectors : k => v.identity }
