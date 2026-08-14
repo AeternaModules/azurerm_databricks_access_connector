@@ -4,7 +4,7 @@ output "databricks_access_connectors_id" {
 }
 output "databricks_access_connectors_identity" {
   description = "Map of identity values across all databricks_access_connectors, keyed the same as var.databricks_access_connectors"
-  value       = { for k, v in azurerm_databricks_access_connector.databricks_access_connectors : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_databricks_access_connector.databricks_access_connectors : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "databricks_access_connectors_location" {
   description = "Map of location values across all databricks_access_connectors, keyed the same as var.databricks_access_connectors"
